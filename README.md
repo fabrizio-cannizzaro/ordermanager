@@ -1,8 +1,11 @@
 # ordermanager
 
 Open one terminal and give the following commands:
+
 > mvn clean install
+
 > cd OrderManagerRest/target/
+
 > java -jar OrderManagerRest-1.0-SNAPSHOT.jar
 
 after, in another terminal
