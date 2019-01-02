@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" ptype="MONOLITH" ppkg="com.cs.order.manager.entity" epkg="table" v="5.2" rws="_15461685865802" Pws="_15461685865802" cws="_15461685865802" pu="false" persistenceUnitName="DEFAULT_PU" sm="false" xs="false" id="_15461685865781" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:entity compositePrimaryKeyClass="FinancialOrderPK" abs="false" class="FinancialOrder" v="true" jbn="false" xre="false" m="false" rootElement="_15461685865781" id="_15461685936823">
+        <jpa:ath>fabrix</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="long" v="true" xvt="" name="quantity" ft="false" id="_154617270823719">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true" precision="0"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.sql.Date" v="true" xvt="" name="entryDate" ft="false" id="_154617273555720">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="Long" v="true" xvt="" name="limitPrice" id="_154617278190921">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="boolean" v="true" xvt="" name="valid" id="_1546176683693122">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:many-to-one optional="false" primaryKey="false" connected-entity-id="_15461719826976" connected-attribute-id="_154617226788218" v="true" xvt="" name="investor" id="_154617226788017">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_154617348288648" connected-attribute-id="_154617401759357" v="true" xvt="" name="book" id="_154617401759356">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="false" primaryKey="false" connected-entity-id="_154617333600836" v="true" xvt="" name="instrument" id="_1546176270000109">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+            </jpa:many-to-one>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_154617343809843" connected-attribute-id="_1546176399392114" v="true" xvt="" name="orderExecutions" id="_1546176399393115">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:cascade>
+                    <jpa:cascade-all/>
+                </jpa:cascade>
+            </jpa:one-to-many>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" ft="false" id="_15461685937554">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="DEFAULT"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="FinancialOrder.findAll">
+            <jpa:query>Select e from FinancialOrder e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="FinancialOrder.findByQuantity">
+            <jpa:query>Select f from FinancialOrder f where f.quantity=:quantity</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="FinancialOrder.findByEntryDate">
+            <jpa:query>Select f from FinancialOrder f where f.entryDate=:entryDate</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="FinancialOrder.findByLimitPrice">
+            <jpa:query>Select f from FinancialOrder f where f.limitPrice=:limitPrice</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="FinancialOrder.findByValid">
+            <jpa:query>Select f from FinancialOrder f where f.valid=:valid</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="InvestorPK" abs="false" class="Investor" v="true" jbn="false" xre="false" m="false" rootElement="_15461685865781" id="_15461719826976">
+        <jpa:ath>fabrix</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="name" ft="false" id="_154625616513320">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+                <jpa:column unique="true" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_15461685936823" connected-attribute-id="_154617226788017" v="true" xvt="" name="financialOrders" id="_154617226788218">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:one-to-many>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" ft="false" id="_15461719826977">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="DEFAULT"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Investor.findAll">
+            <jpa:query>Select e from Investor e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Investor.findByName">
+            <jpa:query>Select i from Investor i where i.name=:name</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="InstrumentPK" abs="false" class="Instrument" v="true" jbn="false" xre="false" m="false" rootElement="_15461685865781" id="_154617333600836">
+        <jpa:ath>fabrix</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="name" ft="false" id="_154617336682139">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:column unique="true" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" ft="false" id="_154617333600837">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="DEFAULT"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Instrument.findAll">
+            <jpa:query>Select e from Instrument e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Instrument.findByName">
+            <jpa:query>Select i from Instrument i where i.name=:name</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyType="D" compositePrimaryKeyClass="OrderExecutionPK" abs="false" class="OrderExecution" v="true" jbn="false" xre="false" m="false" rootElement="_15461685865781" id="_154617343809843">
+        <jpa:ath>fabrix</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="long" v="true" xvt="" name="quantity" ft="false" id="_154617345942146">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true" precision="0"/>
+            </jpa:basic>
+            <jpa:many-to-one optional="false" primaryKey="true" connected-entity-id="_15461685936823" connected-attribute-id="_1546176399393115" v="true" xvt="" name="financialOrder" id="_1546176399392114">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="false" primaryKey="true" connected-entity-id="_1546175941916102" connected-attribute-id="_1546176411441118" v="true" xvt="" name="execution" id="_1546176411439117">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+            </jpa:many-to-one>
+        </jpa:attributes>
+        <jpa:nq e="false" name="OrderExecution.findAll">
+            <jpa:query>Select e from OrderExecution e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="OrderExecution.findByQuantity">
+            <jpa:query>Select e from OrderExecution e where e.quantity=:quantity</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="OrderExecution.findByPrice">
+            <jpa:query>Select e from OrderExecution e where e.price=:price</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="BookPK" abs="false" class="Book" v="true" jbn="false" xre="false" m="false" rootElement="_15461685865781" id="_154617348288648">
+        <jpa:ath>fabrix</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="boolean" v="true" xvt="" name="opened" ft="false" id="_154617357688651">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="boolean" v="true" xvt="" name="executed" dv="false" ft="false" id="_154628360374890">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_15461685936823" connected-attribute-id="_154617401759356" v="true" xvt="" name="financialOrders" id="_154617401759357">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:cascade>
+                    <jpa:cascade-all/>
+                </jpa:cascade>
+            </jpa:one-to-many>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_1546175941916102" connected-attribute-id="_154628340509688" v="true" xvt="" name="executions" id="_154628340510089">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:cascade>
+                    <jpa:cascade-all/>
+                </jpa:cascade>
+            </jpa:one-to-many>
+            <jpa:one-to-one own="true" orp="false" optional="false" primaryKey="false" connected-entity-id="_154617333600836" v="true" xvt="" name="instrument" id="_1546360164722117">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+            </jpa:one-to-one>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" ft="false" id="_154617348288749">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="DEFAULT"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Book.findAll">
+            <jpa:query>Select e from Book e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Book.findByOpened">
+            <jpa:query>Select b from Book b where b.opened=:opened</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Book.findByExecuted">
+            <jpa:query>Select b from Book b where b.executed=:executed</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ExecutionPK" abs="false" class="Execution" v="true" jbn="false" xre="false" m="false" rootElement="_15461685865781" id="_1546175941916102">
+        <jpa:ath>fabrix</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="long" v="true" xvt="" name="price" ft="false" id="_1546175973645105">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true" precision="0"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="long" v="true" xvt="" name="quantity" ft="false" id="_154627224128464">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true" precision="0"/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_154617348288648" connected-attribute-id="_154628340510089" v="true" xvt="" name="book" id="_154628340509688">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-one>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_154617343809843" connected-attribute-id="_1546176411439117" v="true" xvt="" name="orderExecutions" id="_1546176411441118">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:cascade>
+                    <jpa:cascade-all/>
+                </jpa:cascade>
+            </jpa:one-to-many>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" ft="false" id="_1546175941917103">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="DEFAULT"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Execution.findAll">
+            <jpa:query>Select e from Execution e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Execution.findByPrice">
+            <jpa:query>Select e from Execution e where e.price=:price</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Execution.findByQuantity">
+            <jpa:query>Select e from Execution e where e.quantity=:quantity</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:c>
+        <ct>java.util.List</ct>
+        <ct>java.util.Set</ct>
+        <ct>java.util.Map</ct>
+        <ct>java.util.Collection</ct>
+        <cit>java.util.ArrayList</cit>
+        <cit>java.util.LinkedList</cit>
+        <cit>java.util.HashSet</cit>
+        <cit>java.util.TreeSet</cit>
+        <cit>java.util.HashMap</cit>
+    </jpa:c>
+    <jpa:wsl>
+        <jpa:ws n="Main" id="_15461685865802">
+            <i ref="_1546175941916102" x="91" y="314"/>
+            <i ref="_154617343809843" x="384" y="472"/>
+            <i ref="_154617348288648" x="329" y="33"/>
+            <i ref="_154617333600836" x="617" y="33"/>
+            <i ref="_15461685936823" x="812" y="219"/>
+            <i ref="_15461719826976" x="771" y="627"/>
+        </jpa:ws>
+    </jpa:wsl>
+</jpa:entity-mappings>
