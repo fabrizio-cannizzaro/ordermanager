@@ -1,5 +1,6 @@
 # ordermanager
 
+# Usage
 Open one terminal and give the following commands:
 
 > mvn clean install
@@ -22,3 +23,7 @@ http://localhost:8080/fetch-statistics
 http://localhost:8080/fetch-processed-statistics
 
 http://localhost:8080/fetch-order/?id=1
+
+## License
+
+Copyright (C) 2019 Fabrizio Cannizzaro - alcinoo.cannizzaro@gmail.com
