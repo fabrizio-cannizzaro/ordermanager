@@ -1,4 +1,4 @@
-# ordermanager
+# Order Manager
 
 # Usage
 Open one terminal and give the following commands:
