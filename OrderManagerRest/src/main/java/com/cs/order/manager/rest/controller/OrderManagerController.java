@@ -6,7 +6,6 @@ import com.cs.order.manager.dto.BookRequest;
 import com.cs.order.manager.dto.BookStatsResponse;
 import com.cs.order.manager.dto.FinancialOrderResponse;
 import com.cs.order.manager.dto.ProcessedBookStatsResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,17 +14,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- *
  * @author fabrix
  */
 @Controller
 public class OrderManagerController {
 
-	@Autowired
-	private BookService bookService;
+	private final BookService bookService;
 
-	@Autowired
-	private StatisticalService statisticalService;
+	private final StatisticalService statisticalService;
+
+	public OrderManagerController(BookService bookService, StatisticalService statisticalService) {
+		this.bookService = bookService;
+		this.statisticalService = statisticalService;
+	}
 
 	@PostMapping("/open-book")
 	@ResponseBody
@@ -53,7 +54,7 @@ public class OrderManagerController {
 
 	@GetMapping("/fetch-order")
 	@ResponseBody
-	public FinancialOrderResponse fetchOrder(@RequestParam(name = "id", required = true) long id) {
+	public FinancialOrderResponse fetchOrder(@RequestParam(name = "id") long id) {
 		return this.statisticalService.findOrder(id);
 	}
 

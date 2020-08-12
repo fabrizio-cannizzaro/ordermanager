@@ -9,12 +9,12 @@ import com.cs.order.manager.entity.table.FinancialOrder;
 import com.cs.order.manager.entity.table.Instrument;
 import com.cs.order.manager.entity.table.Investor;
 import com.cs.order.manager.entity.table.OrderExecution;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -24,12 +24,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class BookService {
 
-	@Autowired
-	private OrderGenerator orderGenerator;
-	@Autowired
-	private BookRepository bookRepository;
-	@Autowired
-	private InvestorRepository investorRepository;
+	private final OrderGenerator orderGenerator;
+	private final BookRepository bookRepository;
+	private final InvestorRepository investorRepository;
+
+	public BookService(OrderGenerator orderGenerator, BookRepository bookRepository, InvestorRepository investorRepository) {
+		this.orderGenerator = orderGenerator;
+		this.bookRepository = bookRepository;
+		this.investorRepository = investorRepository;
+	}
 
 	public long openBook(Long instrumentId) {
 		Instrument instrument = new Instrument(instrumentId);
@@ -93,7 +96,7 @@ public class BookService {
 				}
 			}
 		});
-		final Double ratio = calulateRatio(validOrders, ex);
+		final Double ratio = calculateRatio(validOrders, ex);
 		if (ratio == null) {
 			book.setExecuted(true);
 		}
@@ -104,7 +107,7 @@ public class BookService {
 		});
 	}
 
-	private Double calulateRatio(List<FinancialOrder> validOrders, Execution ex) {
+	private Double calculateRatio(List<FinancialOrder> validOrders, Execution ex) {
 		long totalDemand = validOrders.stream().mapToLong(FinancialOrder::getQuantity).sum();
 		double offer = ex.getQuantity();
 		return totalDemand <= offer ? null : offer / totalDemand;
@@ -121,11 +124,7 @@ public class BookService {
 	}
 
 	public void closeAllBooks() {
-		final AtomicLong n = new AtomicLong(0);
 		Iterable<Book> books = this.bookRepository.findAll();
-		books.forEach(book -> {
-			this.closeBook(book.getInstrument().getId());
-		});
-
+		books.forEach(book -> this.closeBook(book.getInstrument().getId()));
 	}
 }

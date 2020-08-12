@@ -1,7 +1,6 @@
 package com.cs.order.manager.dto.inner;
 
 /**
- *
  * @author fabrix
  */
 public class ProcessedBookStatsDto extends BookStatsDto {
@@ -34,4 +33,12 @@ public class ProcessedBookStatsDto extends BookStatsDto {
 		this.price = price;
 	}
 
+	@Override
+	public String toString() {
+		return "ProcessedBookStatsDto{" +
+			"valid=" + valid +
+			", executionQuantity=" + executionQuantity +
+			", price=" + price +
+			'}';
+	}
 }

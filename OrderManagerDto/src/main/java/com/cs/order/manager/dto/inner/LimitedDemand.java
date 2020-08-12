@@ -58,4 +58,11 @@ public class LimitedDemand {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "LimitedDemand{" +
+			"limitPrice=" + limitPrice +
+			", demand=" + demand +
+			'}';
+	}
 }

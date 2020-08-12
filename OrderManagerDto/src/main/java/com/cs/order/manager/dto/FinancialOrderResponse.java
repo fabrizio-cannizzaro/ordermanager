@@ -21,4 +21,10 @@ public class FinancialOrderResponse {
 		return financialOrderDto;
 	}
 
+	@Override
+	public String toString() {
+		return "FinancialOrderResponse{" +
+			"financialOrderDto=" + financialOrderDto +
+			'}';
+	}
 }

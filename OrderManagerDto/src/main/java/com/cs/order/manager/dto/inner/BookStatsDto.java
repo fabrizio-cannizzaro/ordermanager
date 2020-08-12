@@ -86,4 +86,17 @@ public class BookStatsDto implements Serializable {
 		this.limitedDemands = limitedDemands;
 	}
 
+	@Override
+	public String toString() {
+		return "BookStatsDto{" +
+			"bookId=" + bookId +
+			", instrument='" + instrument + '\'' +
+			", demand=" + demand +
+			", biggest=" + biggest +
+			", smallest=" + smallest +
+			", earliest=" + earliest +
+			", latest=" + latest +
+			", limitedDemands=" + limitedDemands +
+			'}';
+	}
 }

@@ -3,10 +3,11 @@ package com.cs.order.manager.bl.generator;
 import com.cs.order.manager.entity.table.Book;
 import com.cs.order.manager.entity.table.FinancialOrder;
 import com.cs.order.manager.entity.table.Investor;
-import java.sql.Date;
-import java.util.Random;
 import org.apache.commons.math3.random.RandomDataGenerator;
 import org.springframework.stereotype.Component;
+
+import java.sql.Date;
+import java.util.Random;
 
 /**
  *

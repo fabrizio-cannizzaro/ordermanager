@@ -3,6 +3,7 @@ package com.cs.order.manager.bl.mapper;
 import com.cs.order.manager.dto.inner.LimitedDemand;
 import com.cs.order.manager.dto.inner.ProcessedBookStatsDto;
 import com.cs.order.manager.entity.view.ProcessedBookStats;
+
 import java.util.List;
 
 public class ProcessedBookStatsMapper  {

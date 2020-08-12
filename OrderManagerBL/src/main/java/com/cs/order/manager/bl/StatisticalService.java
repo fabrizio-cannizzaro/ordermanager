@@ -16,11 +16,11 @@ import com.cs.order.manager.entity.table.Book;
 import com.cs.order.manager.entity.table.FinancialOrder;
 import com.cs.order.manager.entity.view.BookStats;
 import com.cs.order.manager.entity.view.ProcessedBookStats;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 /**
  *
@@ -29,12 +29,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class StatisticalService {
 
-	@Autowired
-	private FinancialOrderRepository financialOrderRepository;
-	@Autowired
-	private BookStatsRepository bookStatsRepository;
-	@Autowired
-	private ProcessedBookStatsRepository processedBookStatsRepository;
+	private final FinancialOrderRepository financialOrderRepository;
+	private final BookStatsRepository bookStatsRepository;
+	private final ProcessedBookStatsRepository processedBookStatsRepository;
+
+	public StatisticalService(FinancialOrderRepository financialOrderRepository, BookStatsRepository bookStatsRepository, ProcessedBookStatsRepository processedBookStatsRepository) {
+		this.financialOrderRepository = financialOrderRepository;
+		this.bookStatsRepository = bookStatsRepository;
+		this.processedBookStatsRepository = processedBookStatsRepository;
+	}
 
 	public BookStatsResponse fetchStatistics() {
 		List<BookStatsDto> bookStatsDtos = new ArrayList<>();
@@ -60,7 +63,7 @@ public class StatisticalService {
 
 	public FinancialOrderResponse findOrder(long id) {
 		Optional<FinancialOrder> fo = this.financialOrderRepository.findById(id);
-		return fo.isPresent() ? new FinancialOrderResponse(FinancialOrderMapper.map(fo.get())) : new FinancialOrderResponse();
+		return fo.map(financialOrder -> new FinancialOrderResponse(FinancialOrderMapper.map(financialOrder))).orElseGet(FinancialOrderResponse::new);
 	}
 
 	private List<LimitedDemand> buildBreakDownTable(List<FinancialOrder> financialOrders) {

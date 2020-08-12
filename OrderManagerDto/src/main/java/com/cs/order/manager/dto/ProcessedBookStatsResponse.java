@@ -1,10 +1,10 @@
 package com.cs.order.manager.dto;
 
 import com.cs.order.manager.dto.inner.ProcessedBookStatsDto;
+
 import java.util.List;
 
 /**
- *
  * @author fabrix
  */
 public class ProcessedBookStatsResponse {
@@ -26,4 +26,10 @@ public class ProcessedBookStatsResponse {
 		this.processedBookStatDtos = processedBookStatDtos;
 	}
 
+	@Override
+	public String toString() {
+		return "ProcessedBookStatsResponse{" +
+			"processedBookStatDtos=" + processedBookStatDtos +
+			'}';
+	}
 }

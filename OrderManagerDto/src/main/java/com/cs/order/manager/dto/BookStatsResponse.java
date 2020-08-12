@@ -1,6 +1,7 @@
 package com.cs.order.manager.dto;
 
 import com.cs.order.manager.dto.inner.BookStatsDto;
+
 import java.util.List;
 
 /**
@@ -26,4 +27,10 @@ public class BookStatsResponse {
 		this.bookStatsDtos = bookStatsDtos;
 	}
 
+	@Override
+	public String toString() {
+		return "BookStatsResponse{" +
+			"bookStatsDtos=" + bookStatsDtos +
+			'}';
+	}
 }

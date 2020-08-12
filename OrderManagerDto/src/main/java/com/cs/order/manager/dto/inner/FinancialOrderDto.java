@@ -1,7 +1,6 @@
 package com.cs.order.manager.dto.inner;
 
 /**
- *
  * @author fabrix
  */
 public class FinancialOrderDto {
@@ -50,5 +49,16 @@ public class FinancialOrderDto {
 
 	public void setExecutionPrice(Long executionPrice) {
 		this.executionPrice = executionPrice;
+	}
+
+	@Override
+	public String toString() {
+		return "FinancialOrderDto{" +
+			"id=" + id +
+			", valid=" + valid +
+			", limitPrice=" + limitPrice +
+			", executionQuantity=" + executionQuantity +
+			", executionPrice=" + executionPrice +
+			'}';
 	}
 }
